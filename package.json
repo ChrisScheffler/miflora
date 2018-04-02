@@ -1,0 +1,35 @@
+{
+  "name": "miflora",
+  "version": "1.0.0",
+  "description": "Package for the Xiaomi Plant Sensor Mi Flora",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'none yet'; exit 1;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisScheffler/node-miflora.git"
+  },
+  "keywords": [
+    "plant",
+    "sensor",
+    "monitor",
+    "miflora",
+    "mi",
+    "flora",
+    "xiaomi"
+  ],
+  "author": {
+    "name": "Christian Scheffler",
+    "email": "cs010781@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChrisScheffler/node-miflora/issues"
+  },
+  "homepage": "https://github.com/ChrisScheffler/node-miflora#readme",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "noble": "^1.9.1"
+  }
+}
