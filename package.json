@@ -1,6 +1,6 @@
 {
   "name": "miflora",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "Package for the Xiaomi Plant Sensor Mi Flora",
   "main": "./lib/miflora.js",
   "scripts": {
@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/ChrisScheffler/node-miflora#readme",
   "dependencies": {
-    "colors": "^1.2.1",
     "debug": "^3.1.0",
     "noble": "^1.9.1"
   }

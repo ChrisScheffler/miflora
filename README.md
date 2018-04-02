@@ -1,4 +1,5 @@
 # node-miflora
+
 Node.js package for the Xiaomi Mi Flora Plant Sensor developed by [HuaHuaCaoCao](http://www.huahuacaocao.com/product).
 ![product image](http://img.site.huahuacaocao.net/production/production_05_01.png)
 
@@ -6,12 +7,21 @@ This package is based on and inspired by [demirhanaydin/node-mi-flora](https://g
 
 It uses [noble](https://github.com/noble/noble) for BLE communication and [ES6 Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) instead of callbacks.
 
+Tested with sensor firmware version `3.1.8`.
+
 **Code and readme are work in progress!**
 
 ---
 
 ## Install
-Since this package is not yet published to npm, you should pull the git repository
+
+> pending...
+
+```sh
+npm install miflora
+```
+
+or
 
 ```sh
 git clone https://github.com/ChrisScheffler/node-miflora
@@ -19,8 +29,9 @@ npm install
 ```
 
 ## Usage
+
 ```javascript
-const miflora = require('node-miflora');
+const miflora = require('miflora');
 
 miflora.discover().then(devices => {
   for (let idx in devices) {
@@ -32,6 +43,7 @@ miflora.discover().then(devices => {
 ```
 
 #### Example output
+
 ```javascript
 { address: 'c4:7c:8d:xx:xx:xx',
   rssi: -77,
@@ -56,5 +68,6 @@ miflora.discover().then(devices => {
 ```
 
 ## References
+
 - https://github.com/demirhanaydin/node-mi-flora
 - https://wiki.hackerspace.pl/projects:xiaomi-flora
