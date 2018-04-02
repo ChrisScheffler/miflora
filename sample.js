@@ -1,12 +1,12 @@
 const miflora = require('./lib/miflora.js');
 
-miflora.discover(3000).then((m) => {
-	console.log("done", m);
-	miflora.queryDevice(m[0]).then((d) => {
-		console.log(d);
-	}).catch((e) => {
-		console.log("query error", e);
+miflora.discover(5000).then(devices => {
+	console.log('done', devices);
+	miflora.queryDevice(devices[0]).then(data => {
+		console.dir(data);
+	}).catch(e => {
+		console.log('query error', e);
 	});
-}).catch((e) => {
-	console.log("error:", e);
+}).catch(e => {
+	console.log('error:', e);
 });
