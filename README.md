@@ -1,4 +1,4 @@
-# node-miflora
+# miflora
 
 Node.js package for the Xiaomi Mi Flora Plant Sensor developed by [HuaHuaCaoCao](http://www.huahuacaocao.com/product).
 ![product image](http://img.site.huahuacaocao.net/production/production_05_01.png)
@@ -24,7 +24,7 @@ npm install miflora
 or
 
 ```sh
-git clone https://github.com/ChrisScheffler/node-miflora
+git clone https://github.com/ChrisScheffler/miflora
 npm install
 ```
 
