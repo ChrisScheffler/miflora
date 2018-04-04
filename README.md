@@ -34,37 +34,60 @@ npm install
 const miflora = require('miflora');
 
 miflora.discover().then(devices => {
-  for (let idx in devices) {
-    miflora.queryDevice(devices[idx]).then(data => {
-      console.log(data);
+    devices.forEach(device => {
+        miflora.queryDevice(device).then(data => {
+            console.log('%s:\n%s', device, JSON.stringify(data, null, 2));
+        }).catch(err => {
+            console.error('error while querying device', device, ':', err);
+        });
     });
-  }
+}).catch(err => {
+    console.error('well, something went wrong:', err);
 });
 ```
 
 #### Example output
 
 ```javascript
-{ address: 'c4:7c:8d:xx:xx:xx',
-  rssi: -77,
-  data: { temperature: 20.5, lux: 39, moisture: 30, fertility: 365 },
-  system: { battery: 99, firmware: '3.1.8' } }
-{ address: 'c4:7c:8d:xx:xx:xx',
-  rssi: -71,
-  data: { temperature: 20.7, lux: 21, moisture: 35, fertility: 445 },
-  system: { battery: 92, firmware: '3.1.8' } }
-{ address: 'c4:7c:8d:xx:xx:xx',
-  rssi: -69,
-  data: { temperature: 21, lux: 6, moisture: 33, fertility: 400 },
-  system: { battery: 95, firmware: '3.1.8' } }
-{ address: 'c4:7c:8d:xx:xx:xx',
-  rssi: -75,
-  data: { temperature: 19.9, lux: 43, moisture: 41, fertility: 946 },
-  system: { battery: 99, firmware: '3.1.8' } }
-{ address: 'c4:7c:8d:xx:xx:xx',
-  rssi: -66,
-  data: { temperature: 20, lux: 26, moisture: 70, fertility: 1388 },
-  system: { battery: 100, firmware: '3.1.8' } }
+c4:7c:8d:65:e5:20:
+ {
+  "address": "c4:7c:8d:65:e5:20",
+  "rssi": -61,
+  "battery": 100,
+  "firmware": "3.1.8",
+  "data": {
+    "temperature": 22.1,
+    "lux": 324,
+    "moisture": 22,
+    "fertility": 290
+  }
+}
+c4:7c:8d:65:d5:26:
+ {
+  "address": "c4:7c:8d:65:d5:26",
+  "rssi": -80,
+  "battery": 98,
+  "firmware": "3.1.8",
+  "data": {
+    "temperature": 20.5,
+    "lux": 164,
+    "moisture": 31,
+    "fertility": 300
+  }
+}
+c4:7c:8d:65:d5:1d:
+ {
+  "address": "c4:7c:8d:65:d5:1d",
+  "rssi": -77,
+  "battery": 99,
+  "firmware": "3.1.8",
+  "data": {
+    "temperature": 22,
+    "lux": 311,
+    "moisture": 26,
+    "fertility": 450
+  }
+}
 ```
 
 ## References
