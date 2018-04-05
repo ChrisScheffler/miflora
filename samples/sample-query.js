@@ -12,9 +12,9 @@ miflora.discover(DISCOVERY_TIMEOUT).then(devices => {
         miflora.queryDevice(device).then(data => {
             console.log('device "%s" answered:\n', device, JSON.stringify(data, null, 2));
         }).catch(err => {
-            console.error('error while querying device', device, ':', err);
+            console.error('error while querying device "%s": %s', device, err);
         });
     });
 }).catch(err => {
-    console.error('well, something went wrong:', err);
+    console.error('well, something went wrong: %s', err);
 });
