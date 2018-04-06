@@ -1,13 +1,16 @@
 # miflora
 
-Node.js package for the Xiaomi Mi Flora Plant Sensor developed by [HuaHuaCaoCao](http://www.huahuacaocao.com/product).
+Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](https://github.com/noble/noble) and [ES6 promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
+
 ![product image](http://img.site.huahuacaocao.net/production/production_05_01.png)
 
-This package is based on and inspired by [demirhanaydin/node-mi-flora](https://github.com/demirhanaydin/node-mi-flora).
+![npm](https://img.shields.io/npm/v/miflora.svg)
+![language](https://img.shields.io/github/languages/top/ChrisScheffler/miflora.svg)
+![commit](https://img.shields.io/github/last-commit/ChrisScheffler/miflora.svg)
+![firmware](https://img.shields.io/badge/firmware-3.1.8-brightgreen.svg)
+![licence](https://img.shields.io/npm/l/miflora.svg)
 
-It uses [noble](https://github.com/noble/noble) for BLE communication and [ES6 Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) instead of callbacks.
-
-Tested with sensor firmware version `3.1.8`.
+Have a look in the [Wiki](https://github.com/ChrisScheffler/miflora/wiki).
 
 **Code and readme are work in progress!**
 
@@ -15,17 +18,8 @@ Tested with sensor firmware version `3.1.8`.
 
 ## Install
 
-> pending...
-
 ```sh
 npm install miflora
-```
-
-or
-
-```sh
-git clone https://github.com/ChrisScheffler/miflora
-npm install
 ```
 
 ## Usage
@@ -36,7 +30,7 @@ const miflora = require('miflora');
 miflora.discover().then(devices => {
     devices.forEach(device => {
         miflora.queryDevice(device).then(data => {
-            console.log('%s:\n%s', device, JSON.stringify(data, null, 2));
+            console.log(JSON.stringify(data, null, 2));
         }).catch(err => {
             console.error('error while querying device', device, ':', err);
         });
@@ -46,11 +40,10 @@ miflora.discover().then(devices => {
 });
 ```
 
-#### Example output
+### Example output
 
 ```javascript
-c4:7c:8d:65:e5:20:
- {
+{
   "address": "c4:7c:8d:65:e5:20",
   "rssi": -61,
   "battery": 100,
@@ -62,8 +55,7 @@ c4:7c:8d:65:e5:20:
     "fertility": 290
   }
 }
-c4:7c:8d:65:d5:26:
- {
+{
   "address": "c4:7c:8d:65:d5:26",
   "rssi": -80,
   "battery": 98,
@@ -75,8 +67,7 @@ c4:7c:8d:65:d5:26:
     "fertility": 300
   }
 }
-c4:7c:8d:65:d5:1d:
- {
+{
   "address": "c4:7c:8d:65:d5:1d",
   "rssi": -77,
   "battery": 99,
