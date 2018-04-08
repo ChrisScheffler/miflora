@@ -1,15 +1,21 @@
+'use strict';
+
 const MiFlora = require('../lib/miflora2.js');
-const util = require('util')
 
+const miflora = new MiFlora();
 
-let miflora = new MiFlora();
-
-miflora.discover({ timeout: 10000 }).then(() => {
-    console.log('scan done, rendering...');
-    for (address in miflora.devices) {
-        console.log(util.inspect(miflora.devices[address], { depth: 1, colors: true }))
-    }
-    console.log('done');
+miflora.discover({ timeout: 5000 }).then(devices => {
+	for (const device of devices) {
+		device.connect().then(() => {
+			device.queryFirmwareInfo().then(firmwareData => {
+				console.log(firmwareData);
+				device.querySensorInfo().then(sensorData => {
+					console.log(sensorData);
+				});
+			});
+		});
+	}
+	console.log('done');
 }).catch(err => {
-    console.error('1error while discovering', err);
+	console.error('error while discovering', err);
 });
