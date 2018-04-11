@@ -1,8 +1,6 @@
 # miflora
 
-Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](https://github.com/noble/noble) and [ES6 promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
-
-![product image](http://img.site.huahuacaocao.net/production/production_05_01.png)
+Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](https://github.com/noble/noble).
 
 [![npm](https://img.shields.io/npm/v/miflora.svg)](https://www.npmjs.com/package/miflora)
 ![language](https://img.shields.io/github/languages/top/ChrisScheffler/miflora.svg)
@@ -11,7 +9,7 @@ Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](htt
 ![firmware](https://img.shields.io/badge/firmware-3.1.8-brightgreen.svg)
 [![licence](https://img.shields.io/npm/l/miflora.svg)](LICENSE)
 
-Have a look in the [Wiki](https://github.com/ChrisScheffler/miflora/wiki).
+Have a look in the [Wiki](https://github.com/ChrisScheffler/miflora/wiki) for more information on the sensor.
 
 ---
 
@@ -27,45 +25,85 @@ npm install miflora
 
 ## Usage
 
-```javascript
-const miflora = require('miflora');
+The library uses [async/await](https://javascript.info/async-await) code syntax instead of [Promises chaining](https://javascript.info/promise-chaining) in order to execute asynchronous code sequentially. Since all internal code is based on [Promises](https://javascript.info/promise-basics) you still can use the  `method().then().catch()`-pattern regardless.
 
+*All examples use async/await syntax.*
+
+### Discover devices
+
+```javascript
+const devices = await miflora.discover();
+console.log('devices discovered: ', devices.length);
+```
+
+In this example we listen for 10000 (*default value*) milliseconds (10 seconds) and print out the number of detected devices.
+
+### Discover devices (advanced)
+
+```javascript
 const opts = {
   duration: 60000,
   addresses: ['c4:7c:8d:65:d6:1d', 'c4:7c:8d:65:d5:26', 'c4:7c:8d:65:e6:20']
 };
-
-miflora.discover(opts).then(devices => {
-  devices.forEach(device => {
-    device.query().then(data => {
-      console.dir(data);
-    }).catch(err => {
-      console.error('error while querying device', device, ':', err);
-    });
-  });
-}).catch(err => {
-  console.error('well, something went wrong:', err);
-});
+const devices = await miflora.discover(opts);
+console.log('devices discovered: ', devices.length);
 ```
 
-In this example we disover for 60000 milliseconds (60 seconds) **or** until all devices from given `opts.addresses` have been discovered.
+This time we listen for 60000 milliseconds (60 seconds) **or** until all devices from given `opts.addresses` have been discovered and print out the number of detected devices.
 
+### Query device information
 
-### Example output
+All query methods implicitly initiate a connection if none exists. You can call `device.connect()` explicitly if you like nevertheless.
+
+The library however **doesn't** perform a disconnect implicitly. You can call `device.disconnect()` when you have finished you queries or let you disconnect automatically from the device after 10 seconds.
+
+#### Firmaware & Battery
+
+```javascript
+const data = await device.queryFirmwareInfo();
+console.log(data);
+```
+
+Example output:
 
 ```javascript
 { address: 'c4:7c:8d:65:e6:20',
   type: 'MiFloraMonitor',
-  firmwareInfo: { battery: 100, firmware: '3.1.8' },
-  sensorValues: { temperature: 19.8, lux: 86, moisture: 33, fertility: 981 } }
-{ address: 'c4:7c:8d:65:d5:26',
+  firmwareInfo: { battery: 100, firmware: '3.1.8' } }
+```
+
+#### Sensor values
+
+```javascript
+const data = await device.querySensorValues();
+console.log(data);
+```
+
+Example output:
+
+```javascript
+{ address: 'c4:7c:8d:65:e6:20',
   type: 'MiFloraMonitor',
-  firmwareInfo: { battery: 99, firmware: '3.1.8' },
-  sensorValues: { temperature: 21, lux: 58, moisture: 39, fertility: 706 } }
-{ address: 'c4:7c:8d:65:d6:1d',
-  type: 'MiFloraMonitor',
-  firmwareInfo: { battery: 99, firmware: '3.1.8' },
-  sensorValues: { temperature: 20.8, lux: 78, moisture: 34, fertility: 827 } }
+  sensorValues: { temperature: 21.1, lux: 104, moisture: 36, fertility: 1049 } }
+```
+
+#### Serial Number
+
+```javascript
+const data = await device.querySerial();
+console.log(data);
+```
+
+#### Combined query
+
+```javascript
+const opts = {
+  firmwareInfo: true,
+  sensorValues: true,
+  serial: false;
+};
+const data = await device.query(opts);
+console.log(data);
 ```
 
 ## References
