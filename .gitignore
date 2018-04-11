@@ -58,4 +58,4 @@ typings/
 .env
 
 package-lock.json
-assets
+stuff
