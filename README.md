@@ -6,7 +6,7 @@ Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](htt
 ![language](https://img.shields.io/github/languages/top/ChrisScheffler/miflora.svg)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 ![commit](https://img.shields.io/github/last-commit/ChrisScheffler/miflora.svg)
-![firmware](https://img.shields.io/badge/firmware-3.1.8-brightgreen.svg)
+![firmware](https://img.shields.io/badge/firmware-3.1.9-brightgreen.svg)
 [![licence](https://img.shields.io/npm/l/miflora.svg)](LICENSE)
 
 Have a look in the [Wiki](https://github.com/ChrisScheffler/miflora/wiki) for more information on the sensor.
