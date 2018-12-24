@@ -19,7 +19,7 @@ Please see [the Prerequisites section for noble](https://github.com/noble/noble#
 
 ## Install
 
-```sh
+```bash
 npm install miflora
 ```
 
@@ -43,13 +43,14 @@ In this example we listen for 10000 (*default value*) milliseconds (10 seconds) 
 ```javascript
 const opts = {
   duration: 60000,
+  ignoreUnknown: true,
   addresses: ['c4:7c:8d:65:d6:1d', 'c4:7c:8d:65:d5:26', 'c4:7c:8d:65:e6:20']
 };
 const devices = await miflora.discover(opts);
 console.log('devices discovered: ', devices.length);
 ```
 
-This time we listen for 60000 milliseconds (60 seconds) **or** until all devices from given `opts.addresses` have been discovered and print out the number of detected devices.
+This time we listen for 60000 milliseconds (60 seconds) **or** until all devices from given `opts.addresses` have been discovered and print out the number of detected devices. If `opt.ignoreUnknown` is true, devices which are not in `opt.addresses` will be ignored in result.
 
 ### Query device information
 
@@ -69,7 +70,7 @@ Example output:
 ```javascript
 { address: 'c4:7c:8d:65:e6:20',
   type: 'MiFloraMonitor',
-  firmwareInfo: { battery: 100, firmware: '3.1.8' } }
+  firmwareInfo: { battery: 100, firmware: '3.1.9' } }
 ```
 
 #### Sensor values
@@ -97,13 +98,17 @@ console.log(data);
 #### Combined query
 
 ```javascript
-const opts = {
-  firmwareInfo: true,
-  sensorValues: true,
-  serial: false;
-};
-const data = await device.query(opts);
+const data = await device.query();
 console.log(data);
+```
+
+## Debugging
+
+The library uses [Debug](https://github.com/visionmedia/debug) with the logger names `miflora` and `miflora:device`.
+You can start your script with prefixing DEBUG=miflora* to see all debug output.
+
+```bash
+DEBUG=miflora* node yourapp.js
 ```
 
 ## References

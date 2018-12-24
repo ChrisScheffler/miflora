@@ -1,6 +1,6 @@
 {
   "name": "miflora",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node.js package for the Xiaomi Plant Sensor Flower Care (Mi Flora)",
   "main": "./lib/miflora.js",
   "scripts": {
@@ -32,6 +32,6 @@
     "debug": "^3.1.0"
   },
   "devDependencies": {
-    "xo": "^0.20.3"
+    "xo": "^0.23.0"
   }
 }
