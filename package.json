@@ -1,6 +1,6 @@
 {
   "name": "miflora",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js package for the Xiaomi Plant Sensor Flower Care (Mi Flora)",
   "main": "./lib/miflora.js",
   "scripts": {
@@ -28,10 +28,10 @@
   },
   "homepage": "https://github.com/ChrisScheffler/miflora#readme",
   "dependencies": {
-    "noble": "Timeular/noble#refactor",
-    "debug": "^3.1.0"
+    "@abandonware/noble": "^1.9.2-5",
+    "debug": "^4.1.1"
   },
   "devDependencies": {
-    "xo": "^0.23.0"
+    "xo": "^0.26.1"
   }
 }
