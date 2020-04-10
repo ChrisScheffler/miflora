@@ -1,12 +1,12 @@
 # miflora
 
-Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](https://github.com/noble/noble).
+Node.js package for the Xiaomi Mi Flora Plant Sensor built on top of [noble](https://github.com/abandonware/noble) (maintained by [abandonware](https://abandonware.github.io/)).
 
 [![npm](https://img.shields.io/npm/v/miflora.svg)](https://www.npmjs.com/package/miflora)
 ![language](https://img.shields.io/github/languages/top/ChrisScheffler/miflora.svg)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 ![commit](https://img.shields.io/github/last-commit/ChrisScheffler/miflora.svg)
-![firmware](https://img.shields.io/badge/firmware-3.1.9-brightgreen.svg)
+![firmware](https://img.shields.io/badge/firmware-3.2.1-brightgreen.svg)
 [![licence](https://img.shields.io/npm/l/miflora.svg)](LICENSE)
 
 Have a look in the [Wiki](https://github.com/ChrisScheffler/miflora/wiki) for more information on the sensor.
@@ -15,7 +15,7 @@ Have a look in the [Wiki](https://github.com/ChrisScheffler/miflora/wiki) for mo
 
 ## Prerequisites
 
-Please see [the Prerequisites section for noble](https://github.com/noble/noble#prerequisites).
+Please see [the Prerequisites section for noble](https://github.com/abandonware/noble#prerequisites).
 
 ## Install
 
